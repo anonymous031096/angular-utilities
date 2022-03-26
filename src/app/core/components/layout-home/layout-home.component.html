@@ -14,11 +14,11 @@
 
 <mat-drawer-container class="h-full">
   <mat-drawer class="w-max" #drawer mode="side" opened>
-    <mat-selection-list #shoes [multiple]="false">
-      <mat-list-option *ngFor="let shoe of typesOfShoes" [value]="shoe">
-        {{ shoe }}
-      </mat-list-option>
-    </mat-selection-list>
+    <mat-list>
+      <a mat-list-item matRipple class="no-underline" [routerLink]="['/button-overview']"> Buttons </a>
+    </mat-list>
   </mat-drawer>
-  <mat-drawer-content>Main content</mat-drawer-content>
+  <mat-drawer-content class="p-4">
+    <ng-content></ng-content>
+  </mat-drawer-content>
 </mat-drawer-container>

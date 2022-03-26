@@ -9,8 +9,6 @@ import { Component, OnInit } from '@angular/core';
   },
 })
 export class LayoutHomeComponent implements OnInit {
-  typesOfShoes: string[] = ['Buttons'];
-
   constructor() {}
 
   ngOnInit(): void {}

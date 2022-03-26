@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LayoutHomeComponent } from './core/components/layout-home/layout-home.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: LayoutHomeComponent,
+    path: 'button-overview',
+    loadChildren: () => import('./modules/button-overview/button-overview.module').then((m) => m.ButtonOverviewModule),
   },
 ];
 

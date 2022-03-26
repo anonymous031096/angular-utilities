@@ -1,8 +1,21 @@
-//Flexbox & Grid
+//Layout
 .flex {
   display: flex;
 }
 
+.table {
+  display: table;
+}
+
+.table-cell {
+  display: table-cell;
+}
+
+.grid {
+  display: grid;
+}
+
+//Flexbox & Grid
 .flex-col {
   flex-direction: column;
 }
@@ -11,12 +24,29 @@
   flex: 1 1 auto;
 }
 
-.grid {
-  display: grid;
-}
-
 .grid-flow-col {
   grid-auto-flow: column;
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+//Spacing
+.p-2 {
+  padding: 0.5rem;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.ml-4 {
+  margin-left: 1rem;
+}
+
+.m-2 {
+  margin: 0.5rem;
 }
 
 //Sizing
@@ -34,4 +64,9 @@
 
 .h-screen {
   height: 100vh;
+}
+
+//Typography
+.no-underline {
+  text-decoration-line: none;
 }
