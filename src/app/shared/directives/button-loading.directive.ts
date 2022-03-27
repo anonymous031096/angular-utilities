@@ -2,10 +2,10 @@ import { ComponentRef, Directive, ElementRef, HostBinding, Input, OnChanges, Ren
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 @Directive({
-  selector: '[appLoading]',
+  selector: '[appButtonLoading]'
 })
-export class LoadingDirective implements OnChanges {
-  @Input() appLoading: boolean | undefined;
+export class ButtonLoadingDirective implements OnChanges {
+  @Input() appButtonLoading: boolean | undefined;
   @Input() @HostBinding('disabled') disabled: boolean | string | undefined;
   private appLoadingDisabled = false;
 
@@ -23,7 +23,7 @@ export class LoadingDirective implements OnChanges {
 
   private handleButtonLoading() {
     if (this.appLoadingDisabled) return;
-    if (this.appLoading) {
+    if (this.appButtonLoading) {
       this.disabled = true;
       this.createMatProgressSpinner();
       this.renderer2.addClass(this.elementRef.nativeElement, 'mat-button-disabled');
