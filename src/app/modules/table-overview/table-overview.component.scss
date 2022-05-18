@@ -1,0 +1,23 @@
+table {
+  thead {
+    tr {
+      th {
+        border: 1px solid black;
+      }
+    }
+  }
+}
+
+.mat-table {
+  .mat-header-cell {
+    border: 1px solid black !important;
+    text-align: center;
+  }
+  thead {
+    tr {
+      th {
+        border: 1px solid black !important;
+      }
+    }
+  }
+}

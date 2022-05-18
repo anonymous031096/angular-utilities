@@ -1,23 +1,139 @@
 import { Component, OnInit } from '@angular/core';
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
+const ELEMENT_DATA: any[] = [
+  {
+    col1: 'Row 1 Big',
+    col2: 'Row 1 Big',
+    col3: 50,
+    col4: 50,
+    col5: 50,
+    col6: 50,
+    col7: 50,
+    col8: 50,
+    col9: 50,
+    col10: 50,
+    col11: 50,
+    col12: 50,
+    col13: 50,
+    col14: 50,
+    col15: 50,
+    col16: 50,
+    col17: 50,
+  },
+  {
+    col1: 'Row 2 Big',
+    col2: 'Row 2 Big',
+    col3: 50,
+    col4: 50,
+    col5: 50,
+    col6: 50,
+    col7: 50,
+    col8: 50,
+    col9: 50,
+    col10: 50,
+    col11: 50,
+    col12: 50,
+    col13: 50,
+    col14: 50,
+    col15: 50,
+    col16: 50,
+    col17: 50,
+  },
+  {
+    col1: 'Row 2 Big',
+    col2: 'Row 2 Big',
+    col3: 50,
+    col4: 50,
+    col5: 50,
+    col6: 50,
+    col7: 50,
+    col8: 50,
+    col9: 50,
+    col10: 50,
+    col11: 50,
+    col12: 50,
+    col13: 50,
+    col14: 50,
+    col15: 50,
+    col16: 50,
+    col17: 50,
+  },
+  {
+    col1: 'Row 3 Big',
+    col2: 'Row 3',
+    col3: 50,
+    col4: 50,
+    col5: 50,
+    col6: 50,
+    col7: 50,
+    col8: 50,
+    col9: 50,
+    col10: 50,
+    col11: 50,
+    col12: 50,
+    col13: 50,
+    col14: 50,
+    col15: 50,
+    col16: 50,
+    col17: 50,
+  },
+  {
+    col1: 'Row 3 Big',
+    col2: 'Row 4',
+    col3: 50,
+    col4: 50,
+    col5: 50,
+    col6: 50,
+    col7: 50,
+    col8: 50,
+    col9: 50,
+    col10: 50,
+    col11: 50,
+    col12: 50,
+    col13: 50,
+    col14: 50,
+    col15: 50,
+    col16: 50,
+    col17: 50,
+  },
+  {
+    col1: 'Row 3 Big',
+    col2: 'Row 5',
+    col3: 50,
+    col4: 50,
+    col5: 50,
+    col6: 50,
+    col7: 50,
+    col8: 50,
+    col9: 50,
+    col10: 50,
+    col11: 50,
+    col12: 50,
+    col13: 50,
+    col14: 50,
+    col15: 50,
+    col16: 50,
+    col17: 50,
+  },
+  {
+    col1: 50,
+    col2: 50,
+    col3: 50,
+    col4: 50,
+    col5: 50,
+    col6: 50,
+    col7: 50,
+    col8: 50,
+    col9: 50,
+    col10: 50,
+    col11: 50,
+    col12: 50,
+    col13: 50,
+    col14: 50,
+    col15: 50,
+    col16: 50,
+    col17: 50,
+  },
 ];
 
 @Component({
@@ -26,10 +142,64 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./table-overview.component.scss'],
 })
 export class TableOverviewComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = [
+    'col1',
+    'col2',
+    'col3',
+    'col4',
+    'col5',
+    'col6',
+    'col7',
+    'col8',
+    'col9',
+    'col10',
+    'col11',
+    'col12',
+    'col13',
+    'col14',
+    'col15',
+    'col16',
+    'col17',
+  ];
   dataSource = ELEMENT_DATA;
+
+  headerGrid = [
+    [
+      { colspan: 2, rowspan: 3, name: 'Row 1 Col 1' },
+      { colspan: 4, rowspan: 1, name: 'Row 1 Col 2' },
+      { colspan: 1, rowspan: 3, name: 'Row 1 Col 3' },
+      { colspan: 3, rowspan: 1, name: 'Row 1 Col 4' },
+      { colspan: 2, rowspan: 1, name: 'Row 1 Col 5' },
+      { colspan: 3, rowspan: 1, name: 'Row 1 Col 6' },
+      { colspan: 2, rowspan: 1, name: 'Row 1 Col 7' },
+    ],
+    [
+      { colspan: 1, rowspan: 2, name: 'Row 2 Col 1' },
+      { colspan: 2, rowspan: 1, name: 'Row 2 Col 2' },
+      { colspan: 1, rowspan: 2, name: 'Row 2 Col 3' },
+      { colspan: 1, rowspan: 2, name: 'Row 2 Col 4' },
+      { colspan: 1, rowspan: 2, name: 'Row 2 Col 5' },
+      { colspan: 1, rowspan: 2, name: 'Row 2 Col 6' },
+      { colspan: 1, rowspan: 2, name: 'Row 2 Col 7' },
+      { colspan: 1, rowspan: 2, name: 'Row 2 Col 8' },
+      { colspan: 2, rowspan: 1, name: 'Row 2 Col 9' },
+      { colspan: 1, rowspan: 2, name: 'Row 2 Col 10' },
+      { colspan: 1, rowspan: 2, name: 'Row 2 Col 11' },
+      { colspan: 1, rowspan: 2, name: 'Row 2 Col 12' },
+    ],
+    [
+      { colspan: 1, rowspan: 1, name: 'Row 3 Col 1' },
+      { colspan: 1, rowspan: 1, name: 'Row 3 Col 2' },
+      { colspan: 1, rowspan: 1, name: 'Row 3 Col 3' },
+      { colspan: 1, rowspan: 1, name: 'Row 3 Col 4' },
+    ],
+  ];
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  getHeaderRowName(rowIndex: number, row: any[]) {
+    return row.map((v, i) => `headerRow${rowIndex}Col${i + 1}`);
+  }
 }
