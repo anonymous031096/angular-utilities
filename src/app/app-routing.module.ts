@@ -6,6 +6,10 @@ const routes: Routes = [
     path: 'button-overview',
     loadChildren: () => import('./modules/button-overview/button-overview.module').then((m) => m.ButtonOverviewModule),
   },
+  {
+    path: 'table-overview',
+    loadChildren: () => import('./modules/table-overview/table-overview.module').then((m) => m.TableOverviewModule),
+  },
 ];
 
 @NgModule({

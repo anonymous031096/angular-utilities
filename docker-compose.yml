@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+  node:
+    container_name: ngui
+    build: .
+    restart: always
+    ports:
+      - 4200:4200
+    volumes:
+      - /app/node_modules
+      - C:\Users\DUCLH\Documents\angular-utilities:/app
+    command: npm start
+    # networks:
+    #   - common
+
+#   nginx:
+#     container_name: c_nginx
+#     image: nginx
+#     ports:
+#       - 4200:80
+#     volumes:
+#       - ./nginx/conf.d/:/etc/nginx/conf.d
+#     networks:
+#       - common
+# networks:
+#   common:

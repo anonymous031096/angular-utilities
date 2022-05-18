@@ -33,7 +33,8 @@ $angular-utilities-theme: mat.define-light-theme((
 // that you are using.
 @include mat.all-component-themes($angular-utilities-theme);
 
-/* You can add global styles to this file, and also import other style files */
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
