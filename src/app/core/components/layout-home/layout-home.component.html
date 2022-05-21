@@ -15,8 +15,9 @@
 <mat-drawer-container class="h-full">
   <mat-drawer class="w-max" #drawer mode="side" opened>
     <mat-list>
-      <a mat-list-item matRipple class="no-underline" [routerLink]="['/button-overview']"> Buttons </a>
-      <a mat-list-item matRipple class="no-underline" [routerLink]="['/table-overview']"> Table </a>
+      <a mat-list-item matRipple class="no-underline" [routerLink]="['/button-overview']" [routerLinkActive]="'bg-gray-200'"> Buttons </a>
+      <a mat-list-item matRipple class="no-underline" [routerLink]="['/table-overview']" [routerLinkActive]="'bg-gray-200'"> Table </a>
+      <a mat-list-item matRipple class="no-underline" [routerLink]="['/tooltip-overview']" [routerLinkActive]="'bg-gray-200'"> Tooltip </a>
     </mat-list>
   </mat-drawer>
   <mat-drawer-content class="p-4">

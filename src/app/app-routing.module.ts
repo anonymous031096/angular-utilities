@@ -10,6 +10,10 @@ const routes: Routes = [
     path: 'table-overview',
     loadChildren: () => import('./modules/table-overview/table-overview.module').then((m) => m.TableOverviewModule),
   },
+  {
+    path: 'tooltip-overview',
+    loadChildren: () => import('./modules/tooltip-overview/tooltip-overview.module').then((m) => m.TooltipOverviewModule),
+  },
 ];
 
 @NgModule({
