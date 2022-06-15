@@ -1,7 +1,11 @@
+import { FlatTreeControl } from '@angular/cdk/tree';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
+import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { get, set } from 'lodash';
 
 const ELEMENT_DATA: any[] = [
@@ -130,10 +134,67 @@ const ELEMENT_DATA: any[] = [
   },
 ];
 
+export interface TreeElement {
+  name: string;
+  position: number;
+  weight: number;
+  symbol: string;
+  children?: TreeElement[];
+}
+
+const TREE_DATA: TreeElement[] = [
+  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
+  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He', children: [{ position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' }] },
+
+  {
+    position: 4,
+    name: 'Beryllium',
+    weight: 9.0122,
+    symbol: 'Be',
+    children: [{ position: 5, name: 'Boron', weight: 10.811, symbol: 'B', children: [{ position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' }] }],
+  },
+
+  {
+    position: 6,
+    name: 'Carbon',
+    weight: 12.0107,
+    symbol: 'C',
+    children: [
+      {
+        position: 7,
+        name: 'Nitrogen',
+        weight: 14.0067,
+        symbol: 'N',
+        children: [
+          {
+            position: 8,
+            name: 'Oxygen',
+            weight: 15.9994,
+            symbol: 'O',
+            children: [
+              { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
+              { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+];
+
+interface TreeFlatNode {
+  expandable: boolean;
+  name: string;
+  position: number;
+  weight: number;
+  symbol: string;
+  level: number;
+}
+
 @Component({
   selector: 'app-table-overview',
   standalone: true,
-  imports: [CommonModule, FormsModule, MatTableModule],
+  imports: [CommonModule, FormsModule, MatTableModule, MatButtonModule, MatIconModule],
   templateUrl: './table-overview.component.html',
   styleUrls: ['./table-overview.component.scss'],
 })
@@ -157,6 +218,7 @@ export class TableOverviewComponent implements OnInit {
     'col16',
     'col17',
   ];
+  treeTableColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource: any[] = [];
 
   headerGrid = [
@@ -191,13 +253,35 @@ export class TableOverviewComponent implements OnInit {
     ],
   ];
 
+  treeControl = new FlatTreeControl<TreeFlatNode>(
+    (node) => node.level,
+    (node) => node.expandable
+  );
+
+  treeFlattener = new MatTreeFlattener(
+    (node: TreeElement, level: number) => {
+      return {
+        expandable: !!node.children && node.children.length > 0,
+        ...node,
+        level: level,
+      };
+    },
+    (node) => node.level,
+    (node) => node.expandable,
+    (node) => node.children
+  );
+
+  treeTableDataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
+
   constructor() {}
-  ngAfterViewChecked(): void {
-    this.showData();
-  }
 
   ngOnInit(): void {
+    this.treeTableDataSource.data = TREE_DATA;
     this.dataSource = this.computeData(ELEMENT_DATA, ['col1', 'col2']);
+  }
+
+  ngAfterViewChecked(): void {
+    this.showData();
   }
 
   getHeaderRowName(rowIndex: number, row: any[]) {
