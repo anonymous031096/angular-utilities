@@ -1,7 +1,0 @@
-<!-- This button triggers the overlay and is it's origin -->
-<button (mouseenter)="isOpen = true" (mouseout)="isOpen = false" type="button" cdkOverlayOrigin #trigger="cdkOverlayOrigin">Hover me</button>
-
-<!-- This template displays the overlay content and is connected to the button -->
-<ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="isOpen">
-  <div class="bg-white">Hi tooltip</div>
-</ng-template>

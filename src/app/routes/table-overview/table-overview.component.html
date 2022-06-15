@@ -1,0 +1,126 @@
+<div class="overflow-auto w-full">
+  <table mat-table [dataSource]="dataSource" class="drop-shadow-md border-separate w-max">
+    <ng-container matColumnDef="col1">
+      <th mat-header-cell *matHeaderCellDef>col1</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [attr.rowspan]="element?.groupCell?.col1?.rowspan || 1"
+        [attr.colspan]="element?.groupCell?.col1?.colspan || 1"
+        [hidden]="element?.groupCell?.col1?.hidden"
+        class="sticky left-0 w-40 bg-white border border-slate-200"
+      >
+        {{ element?.col1 }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="col2">
+      <th mat-header-cell *matHeaderCellDef>col2</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [attr.rowspan]="element?.groupCell?.col2?.rowspan || 1"
+        [attr.colspan]="element?.groupCell?.col2?.colspan || 1"
+        [hidden]="element?.groupCell?.col2?.hidden"
+        class="sticky left-40 w-40 bg-white border border-slate-200"
+      >
+        {{ element?.col2 }}
+      </td>
+    </ng-container>
+    <!-- Position Column -->
+    <ng-container
+      *ngFor="let item of ['col3', 'col4', 'col5', 'col6', 'col7', 'col8', 'col9', 'col10', 'col11', 'col12', 'col13', 'col14', 'col15', 'col16', 'col17']"
+      [matColumnDef]="item"
+    >
+      <th mat-header-cell *matHeaderCellDef>{{ item }}</th>
+      <td mat-cell *matCellDef="let element" class="hover:bg-slate-100">
+        <input class="text-center bg-transparent focus:outline-none" [(ngModel)]="element[item]" />
+      </td>
+    </ng-container>
+
+    <!-- Gen header -->
+    <ng-container *ngFor="let row of headerGrid; let rowI = index">
+      <ng-container *ngFor="let col of row; let colI = index">
+        <ng-container [matColumnDef]="'headerRow' + (rowI + 1) + 'Col' + (colI + 1)">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            [attr.colspan]="col.colspan"
+            [attr.rowspan]="col.rowspan"
+            class="text-center p-0 border border-slate-200"
+            [ngClass]="{ 'sticky left-0 bg-white': col.sticky }"
+          >
+            {{ col.name }}
+          </th>
+        </ng-container>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="getHeaderRowName(rowI + 1, row)"></tr>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="hidden"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
+<button (click)="showData()">Show Data</button>
+<pre id="myData"></pre>
+<!-- <div class="relative">
+    <div class="overflow-auto w-full">
+      <table class="border-separate">
+        <thead>
+          <tr>
+            <th colspan="2" rowspan="3" class="sticky left-0 bg-white">Các cấp IWP</th>
+            <th colspan="4">KPI</th>
+            <th colspan="2" rowspan="3">Thu nhập cố định</th>
+            <th colspan="3">Hoa hồng iBond</th>
+            <th colspan="2">Hoa hồng iConnect</th>
+            <th colspan="3">Hoa hồng quỹ TCBF</th>
+            <th colspan="2">Hoa hồng iSave</th>
+          </tr>
+          <tr>
+            <th rowspan="2">Doanh số tối thiểu</th>
+            <th colspan="2">Số lượng thành viên active</th>
+            <th rowspan="2">Số lượng KH active</th>
+            <th rowspan="2">Hoa hồng bán trực tiếp (% doanh số bán trực tiếp)</th>
+            <th rowspan="2">Hoa hồng bán trực tiếp (% doanh số bán trực tiếp)</th>
+            <th rowspan="2">Hoa hồng bán trực tiếp (% doanh số bán trực tiếp)</th>
+            <th rowspan="2">Hoa hồng bán trực tiếp (% doanh số bán trực tiếp)</th>
+            <th rowspan="2">Hoa hồng bán trực tiếp (% doanh số bán trực tiếp)</th>
+            <th colspan="2">Hoa hồng bán trực tiếp</th>
+            <th rowspan="2">Hoa hồng quản lý</th>
+            <th rowspan="2">Hoa hồng quản lý</th>
+            <th rowspan="2">Hoa hồng quản lý</th>
+          </tr>
+          <tr>
+            <th>3 tháng đầu</th>
+            <th>Sau đó</th>
+            <th>Khi KH mua (% doanh số bán trực tiếp)</th>
+            <th>Khi KH còn duy trì số dư (% doanh số bán trực tiếp/năm)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let element of dataSource">
+            <td
+              [attr.rowspan]="element?.groupCell?.col1?.rowspan || 1"
+              [attr.colspan]="element?.groupCell?.col1?.colspan || 1"
+              [hidden]="element?.groupCell?.col1?.hidden"
+              class="sticky left-0 w-40 bg-white border border-indigo-600"
+            >
+              {{ element?.col1 }}
+            </td>
+            <td
+              [attr.rowspan]="element?.groupCell?.col2?.rowspan || 1"
+              [attr.colspan]="element?.groupCell?.col2?.colspan || 1"
+              [hidden]="element?.groupCell?.col2?.hidden"
+              class="sticky left-10 bg-white border border-indigo-600"
+            >
+              {{ element?.col2 }}
+            </td>
+            <td
+              *ngFor="let col of ['col3', 'col4', 'col5', 'col6', 'col7', 'col8', 'col9', 'col10', 'col11', 'col12', 'col13', 'col14', 'col15', 'col16', 'col17']"
+            >
+              <input [(ngModel)]="element[col]" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div> -->

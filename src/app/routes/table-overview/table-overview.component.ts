@@ -1,4 +1,7 @@
-import { AfterViewChecked, Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
 import { get, set } from 'lodash';
 
 const ELEMENT_DATA: any[] = [
@@ -129,10 +132,12 @@ const ELEMENT_DATA: any[] = [
 
 @Component({
   selector: 'app-table-overview',
+  standalone: true,
+  imports: [CommonModule, FormsModule, MatTableModule],
   templateUrl: './table-overview.component.html',
   styleUrls: ['./table-overview.component.scss'],
 })
-export class TableOverviewComponent implements OnInit, AfterViewChecked {
+export class TableOverviewComponent implements OnInit {
   displayedColumns: string[] = [
     'col1',
     'col2',
