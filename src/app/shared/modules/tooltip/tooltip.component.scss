@@ -1,0 +1,16 @@
+:host {
+  .app-tooltip {
+    background: rgba(97, 97, 97, 0.9);
+    color: #fff;
+    border-radius: 4px;
+    max-width: 250px;
+    padding-left: 8px;
+    padding-right: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    // transform: scale(0);
+  }
+}

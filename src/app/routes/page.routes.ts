@@ -13,6 +13,10 @@ export const PAGE_ROUTES: Routes = [
         path: 'table-overview',
         loadComponent: () => import('./table-overview/table-overview.component').then((c) => c.TableOverviewComponent),
       },
+      {
+        path: 'tooltip-overview',
+        loadComponent: () => import('./tooltip-overview/tooltip-overview.component').then((c) => c.TooltipOverviewComponent),
+      },
     ],
   },
   {

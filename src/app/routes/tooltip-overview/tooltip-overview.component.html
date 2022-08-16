@@ -1,0 +1,65 @@
+<div class="flex gap-3">
+  <div class="grid gap-3 py-10">
+    <button appTooltip="test text" placement="leftTop" mat-raised-button>
+      leftTop
+    </button>
+    <button appTooltip="test text" placement="left" mat-raised-button>
+      left
+    </button>
+    <button appTooltip="test text" placement="leftBottom" mat-raised-button>
+      leftBottom
+    </button>
+  </div>
+  <div class="grid gap-3">
+    <div class="flex gap-3 items-start justify-between">
+      <button appTooltip="test text" placement="topLeft" mat-raised-button>
+        topLeft
+      </button>
+      <button appTooltip="test text" placement="top" mat-raised-button>
+        top
+      </button>
+      <button appTooltip="test text" placement="topRight" mat-raised-button>
+        topRight
+      </button>
+    </div>
+    <div class="flex items-center justify-center">
+      <button [appTooltip]="temp" mat-raised-button>use TemplateRef</button>
+    </div>
+    <div class="flex gap-3 items-end justify-between">
+      <button appTooltip="test text" placement="bottomLeft" mat-raised-button>
+        bottomLeft
+      </button>
+      <button appTooltip="test text" placement="bottom" mat-raised-button>
+        bottom
+      </button>
+      <button appTooltip="test text" placement="bottomRight" mat-raised-button>
+        bottomRight
+      </button>
+    </div>
+  </div>
+  <div class="grid gap-3 py-10">
+    <button appTooltip="test text" placement="rightTop" mat-raised-button>
+      rightTop
+    </button>
+    <button appTooltip="test text" placement="right" mat-raised-button>
+      right
+    </button>
+    <button
+      appTooltip="test text"
+      placement="rightBottom"
+      mat-raised-button
+      #target
+    >
+      rightBottom
+    </button>
+  </div>
+</div>
+<ng-template #temp>
+  <div class="p-2 bg-orange-300 text-white">
+    I'm Template
+    <br />
+    I'm Template
+    <br />
+    I'm Template
+  </div>
+</ng-template>
